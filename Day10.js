@@ -79,13 +79,19 @@ list.addEventListener('click', function(e) {
 });
 
 // . Task 10: Add an event listener to a parent element that listens for events from dynamically added child elements.
-// Assuming .my-list is the parent element and you're interested in click events on its child elements, which could be dynamically added
-const parentElement = document.querySelector('.my-list');
 
-parentElement.addEventListener('click', function(e) {
-    // Check if the clicked element is of a specific type or class you're interested in
-    if (e.target && e.target.matches('selector-for-child-elements')) {
-        // Perform actions based on the clicked child element
-        console.log('Event from dynamically added child element:', e.target);
+const parent = document.querySelector('#parent')
+
+parent.addEventListener('click',(event)=>{
+    if(event.target && event.target.classList.contains('child')){
+        console.log('child element clicked:',event.target.textContent);
     }
-});
+})
+
+const addchildBtn = document.querySelector('#addChild')
+addchildBtn.addEventListener('click',()=>{
+    const newChild = document.createElement('div')
+    newChild.textContent = 'New Child';
+    newChild.classList.add('child')
+    parent.appendChild(newChild)
+})
