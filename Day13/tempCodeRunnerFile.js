@@ -1,0 +1,1 @@
+onsole.log(addtwonums(2,5));
