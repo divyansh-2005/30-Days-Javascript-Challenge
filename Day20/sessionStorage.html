@@ -1,0 +1,39 @@
+<!-- Task 7: Create a simple form that saves user input (e.g., name and email) to sessionStorage when submitted. Retrieve and display the saved data on page load. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sessionStorage</title>
+</head>
+<body>
+    <form id="userForm">
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="displayData"></div>
+
+    <script>
+        document.getElementById('userForm').addEventListener('submit', (event) => {
+            event.preventDefault();
+            
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+
+            sessionStorage.setItem('name',name);
+            sessionStorage.setItem('email',email);
+            displayData();
+        })
+
+        function displayData(){
+            let name = sessionStorage.getItem('name');
+            let email = sessionStorage.getItem('email');
+
+            document.getElementById('displayData').innerHTML = `Name: ${name}, Email: ${email}`;
+        }
+    </script>
+
+</body>
+</html>
